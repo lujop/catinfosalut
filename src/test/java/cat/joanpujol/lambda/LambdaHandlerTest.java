@@ -1,11 +1,10 @@
 package cat.joanpujol.lambda;
 
-import org.junit.jupiter.api.Test;
-
-import io.quarkus.test.junit.QuarkusTest;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
+
+import io.quarkus.test.junit.QuarkusTest;
+import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 public class LambdaHandlerTest {
@@ -17,8 +16,7 @@ public class LambdaHandlerTest {
 
         Person in = new Person();
         in.setName("Stu");
-        given()
-                .contentType("application/json")
+        given().contentType("application/json")
                 .accept("application/json")
                 .body(in)
                 .when()
@@ -27,5 +25,4 @@ public class LambdaHandlerTest {
                 .statusCode(200)
                 .body(containsString("Hello Stu"));
     }
-
 }
