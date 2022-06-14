@@ -20,4 +20,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build native image
-      run: ./mvnw -B package -Pnative -Dquarkus.native.container-build=true --file pom.xml
+      run: ./mvnw -B package -Pnative --file pom.xml
