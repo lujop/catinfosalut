@@ -39,6 +39,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: function.zip
+        path: terraform/function.zip
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       with:
