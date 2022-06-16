@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  TF_LOG: DEBUG
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -39,7 +41,11 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: function.zip
-        path: terraform/function.zip
+        path: terraform
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: terraform
+
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
       with:
@@ -54,6 +60,9 @@ jobs:
       id: init
       run: terraform init
 
+    - name: Display current directory content
+      run: ls -l .
+    
     - name: Terraform Validate
       id: validate
       run: terraform validate -no-color
