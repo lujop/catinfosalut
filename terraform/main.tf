@@ -17,7 +17,7 @@
 #  required_version = "~> 1.0"
 #}
 
-variable aws_region {
+variable "aws_region" {
   description = "AWS region"
 }
 
@@ -53,18 +53,18 @@ resource "aws_iam_role" "lambda_exec" {
       Principal = {
         Service = "lambda.amazonaws.com"
       }
-    }
+      }
     ]
   })
 }
 
 resource "aws_lambda_function" "catinfosalut" {
-  filename = "function.zip"
+  filename      = "function.zip"
   function_name = "hello_function"
-  role = aws_iam_role.lambda_exec.arn
+  role          = aws_iam_role.lambda_exec.arn
 
   #To trigger updates
-  source_code_hash =  filebase64sha256("function.zip")
+  source_code_hash = filebase64sha256("function.zip")
 
   runtime = "provided.al2"
 }
