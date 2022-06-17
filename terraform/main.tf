@@ -17,10 +17,6 @@
 #  required_version = "~> 1.0"
 #}
 
-variable "aws_region" {
-  description = "AWS region"
-}
-
 provider "aws" {
   region = var.aws_region
 }
