@@ -63,4 +63,10 @@ resource "aws_lambda_function" "catinfosalut" {
   source_code_hash = filebase64sha256("function.zip")
 
   runtime = "provided.al2"
+  handler = "io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest"
+  environment {
+    variables = {
+      DISABLE_SIGNAL_HANDLERS = true
+    }
+  }
 }
