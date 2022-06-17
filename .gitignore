@@ -39,3 +39,9 @@ nb-configuration.xml
 .env
 
 HELP.md
+
+NOTES.md
+/terraform/.terraform/
+/terraform/.terraform.lock.hcl
+
+terraform/function.zip
