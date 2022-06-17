@@ -38,6 +38,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.TEST_SECRET1 }}
       AWS_SECRET_ACCESS_KEY: $${ secrets.TEST_SECRET1 }}
+      BBB: ${{ secrets.TEST_SECRET1 }}
 
     steps:
     - name: "Checkout"
@@ -73,10 +74,14 @@ jobs:
       run: terraform validate -no-color
 
     - name: Show env vars
+      env:
+        DDD: ${{ secrets.TEST_SECRET1 }}
       run: |
         echo valor1 $AWS_ACCESS_KEY_ID valor2 $AWS_SECRET_ACCESS_KEY
         echo $AWS_ACCESS_KEY_ID
         echo $AWS_SECRET_ACCESS_KEY       
+        echo $BBB       
+        echo $DDD       
 
     - name: Terraform Plan
       id: plan
