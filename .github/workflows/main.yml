@@ -36,8 +36,8 @@ jobs:
       run:
         working-directory: terraform
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: $${ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.TEST_SECRET1 }}
+      AWS_SECRET_ACCESS_KEY: $${ secrets.TEST_SECRET1 }}
     steps:
     - name: "Checkout"
       uses: actions/checkout@v3
@@ -70,6 +70,9 @@ jobs:
     - name: Terraform Validate
       id: validate
       run: terraform validate -no-color
+
+    - name: Show env vars
+      run: echo $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY
 
     - name: Terraform Plan
       id: plan
