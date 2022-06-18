@@ -17,6 +17,15 @@
 #  required_version = "~> 1.0"
 #}
 
+terraform {
+  cloud {
+    organization = "lujop"
+    workspaces {
+      name = "catinfosalut"
+    }
+  }
+}
+
 provider "aws" {
   region = var.aws_region
 }
