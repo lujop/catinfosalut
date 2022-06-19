@@ -23,6 +23,6 @@ public class LambdaHandlerTest {
                 .post()
                 .then()
                 .statusCode(200)
-                .body(containsString("Hello Stu"));
+                .body(containsString("Hello Stu!"));
     }
 }

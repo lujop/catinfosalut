@@ -7,6 +7,6 @@ public class GreetingLambda implements RequestHandler<Person, String> {
 
     @Override
     public String handleRequest(Person input, Context context) {
-        return "Hello " + input.getName();
+        return "Hello " + input.getName() + "!";
     }
 }
