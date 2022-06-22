@@ -1,28 +1,29 @@
 package cat.joanpujol.lambda;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 
 import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 public class LambdaHandlerTest {
 
     @Test
-    public void testSimpleLambdaSuccess() throws Exception {
-        // you test your lambdas by invoking on http://localhost:8081
-        // this works in dev mode too
-
-        Person in = new Person();
-        in.setName("Stu");
-        given().contentType("application/json")
-                .accept("application/json")
-                .body(in)
-                .when()
-                .post()
+    public void testHello() {
+        RestAssured.when()
+                .get("/rest/hello?name=Joan")
                 .then()
-                .statusCode(200)
-                .body(containsString("Hello Stu!"));
+                .contentType("text/plain")
+                .body(equalTo("hello Joan"));
+    }
+
+    @Test
+    public void testHelloPerson() {
+        RestAssured.when()
+                .get("/rest/helloPerson?name=Joan")
+                .then()
+                .contentType("application/json")
+                .body(equalTo("{\"name\":\"Joan\"}"));
     }
 }
