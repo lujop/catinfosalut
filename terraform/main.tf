@@ -44,6 +44,7 @@ resource "aws_lambda_function" "catinfosalut" {
   environment {
     variables = {
       DISABLE_SIGNAL_HANDLERS = true
+      telegram_token          = aws_ssm_parameter.telegram_token.name
     }
   }
 }
@@ -88,3 +89,19 @@ resource "aws_lambda_permission" "api_gateway_catinfosalut" {
   source_arn = "arn:aws:execute-api:${var.aws_region}:${var.aws_account_id}:${aws_apigatewayv2_api.CatInfoSalutAPI.id}/*/*"
 }
 
+data "aws_iam_policy_document" "lambda_exec_role_policy" {
+  statement {
+    actions = [
+      "ssm:GetParameter",
+    ]
+    resources = [
+      aws_ssm_parameter.telegram_token.arn
+    ]
+  }
+}
+
+resource "aws_ssm_parameter" "telegram_token" {
+  name  = "telegram_token"
+  type  = "SecureString"
+  value = var.telegram_token
+}
