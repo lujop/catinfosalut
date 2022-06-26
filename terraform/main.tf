@@ -41,6 +41,11 @@ resource "aws_iam_role_policy_attachment" "aws_xray_write_only_access" {
   role       = aws_iam_role.lambda_exec.name
   policy_arn = "arn:aws:iam::aws:policy/AWSXrayWriteOnlyAccess"
 }
+# Attach policy to read SSM parameters
+resource "aws_iam_role_policy_attachment" "aws_ssm_read_only_access" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess"
+}
 
 resource "aws_lambda_function" "catinfosalut" {
   filename      = "function.zip"
