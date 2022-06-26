@@ -7,3 +7,8 @@ variable "aws_account_id" {
   description = "AWS account Id"
   type        = string
 }
+
+variable "telegram_token" {
+  type      = string
+  sensitive = true
+}
