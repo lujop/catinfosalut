@@ -35,7 +35,10 @@ public class GreetingResource {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/token")
     public String token() {
-        var paramRequest = GetParameterRequest.builder().name("telegram_token").build();
+        var paramRequest = GetParameterRequest.builder()
+                .name("telegram_token")
+                .withDecryption(true)
+                .build();
         return ssmClient.getParameter(paramRequest).parameter().value();
     }
 }
