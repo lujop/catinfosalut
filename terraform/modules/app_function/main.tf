@@ -51,7 +51,6 @@ resource "aws_lambda_function" "catinfosalut" {
   environment {
     variables = {
       DISABLE_SIGNAL_HANDLERS = true
-      telegram_token          = aws_ssm_parameter.telegram_token.name
     }
   }
 }
