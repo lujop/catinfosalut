@@ -1,5 +1,3 @@
-output "CatInfoSalutAPI" {
-  value = {
-    base_url = aws_apigatewayv2_stage.defaultStage.invoke_url
-  }
+output "api_url" {
+  value = module.app_function.api_url
 }
