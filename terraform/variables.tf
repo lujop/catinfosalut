@@ -9,6 +9,7 @@ variable "aws_account_id" {
 }
 
 variable "telegram_token" {
-  type      = string
-  sensitive = true
+  description = "Bot Telegram secret token"
+  type        = string
+  sensitive   = true
 }

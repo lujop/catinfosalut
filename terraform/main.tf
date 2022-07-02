@@ -1,10 +1,10 @@
 terraform {
-  #  cloud {
-  #    organization = "lujop"
-  #    workspaces {
-  #      name = "catinfosalut"
-  #    }
-  #  }
+  cloud {
+    organization = "lujop"
+    workspaces {
+      name = "catinfosalut"
+    }
+  }
   required_providers {
     http-full = {
       source  = "salrashid123/http-full"
