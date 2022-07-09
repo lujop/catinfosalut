@@ -66,6 +66,11 @@
       <artifactId>slf4j-jboss-logmanager</artifactId>
     </dependency>
     <dependency>
+      <groupId>cat.joanpujol</groupId>
+      <artifactId>quarkus-register-reflection-deployment</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    <dependency>
       <groupId>org.telegram</groupId>
       <artifactId>telegrambots</artifactId>
       <version>6.1.0</version>

@@ -22,7 +22,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build native image
-      run: ./mvnw -B package -Pnative --file pom.xml
+      run: ./mvnw -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B package -Pnative --file pom.xml
+      env:
+        ACCESS_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_GITHUB }}
     - uses: actions/upload-artifact@v3
       with:
         name: function.zip

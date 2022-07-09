@@ -40,7 +40,7 @@ data "http" "setupWebhook" {
   method   = "POST"
 
   request_headers = {
-    PrivateApiSecret = urlencode(aws_ssm_parameter.private_api_secret.value)
+    PrivateApiSecret = aws_ssm_parameter.private_api_secret.value
     Content-Type     = "application/x-www-form-urlencoded"
   }
 

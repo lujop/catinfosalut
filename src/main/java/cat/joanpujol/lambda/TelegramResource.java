@@ -66,8 +66,10 @@ public class TelegramResource {
             @FormParam("baseUrl") String baseURL, @HeaderParam(PRIVATE_API_SECRET_HEADER) String privateApiHeader)
             throws TelegramApiException {
         if (Strings.isNullOrEmpty(privateApiHeader)
-                || !Objects.equals(privateApiHeader, secretsConfig.getSsmPrivateApiSecretToken()))
+                || !Objects.equals(privateApiHeader, secretsConfig.getSsmPrivateApiSecretToken())) {
+            logger.debug("Provided secret {} is not correct", privateApiHeader);
             return Response.status(Response.Status.FORBIDDEN).build();
+        }
 
         SetWebhook setWebhook = new SetWebhook();
         String url = baseURL + "telegram/webhook";
